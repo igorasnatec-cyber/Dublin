@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="Five quick questions to match your tattoo idea with the right artist in Dublin.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Find Your Tattoo Match | Dublin">
+<meta property="og:description" content="Five quick questions. No fluff, no messing about.">
+<title>Find Your Tattoo Match | Dublin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1055612456827236');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1055612456827236&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+  :root{
+    --black:#0a0a0a;
+    --ink:#141414;
+    --paper:#f4f2ee;
+    --blood:#a3121f;
+    --grey:#8a8a8a;
+    --line:#2a2a2a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  html,body{
+    background:var(--black);
+    color:var(--paper);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    height:100%;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body{
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(163,18,31,0.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(255,255,255,0.03), transparent 40%);
+  }
+  .noise{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    opacity:0.03;pointer-events:none;z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+  }
+  .wrap{
+    position:relative;z-index:2;
+    max-width:560px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding:0 28px;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  header{
+    padding:36px 0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--paper);
+  }
+  .logo span{color:var(--blood);}
+  .locale{
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--grey);
+  }
+  .progress-track{
+    height:2px;
+    background:var(--line);
+    width:100%;
+    margin-top:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--blood);
+    width:0%;
+    transition:width .5s cubic-bezier(.65,0,.35,1);
+  }
+  main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:40px 0 60px;
+  }
+  .screen{display:none;animation:rise .55s cubic-bezier(.16,1,.3,1);}
+  .screen.active{display:block;}
+  @keyframes rise{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .step-tag{
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--blood);
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:34px;
+    line-height:1.15;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .sub{
+    font-size:14px;
+    color:var(--grey);
+    margin-bottom:32px;
+    line-height:1.5;
+  }
+  .options{display:flex;flex-direction:column;gap:12px;}
+  .opt{
+    background:var(--ink);
+    border:1px solid var(--line);
+    color:var(--paper);
+    padding:18px 20px;
+    border-radius:2px;
+    font-size:15px;
+    font-weight:500;
+    text-align:left;
+    cursor:pointer;
+    transition:all .25s ease;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+    touch-action:manipulation;
+    user-select:none;
+    font-family:inherit;
+  }
+  .opt::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:0;
+    background:var(--blood);
+    transition:width .3s ease;
+    z-index:0;
+  }
+  .opt:hover{border-color:var(--blood);transform:translateX(4px);}
+  .opt:active{transform:translateX(2px) scale(0.99);}
+  .opt:hover::before{width:3px;}
+  .opt .arrow{color:var(--grey);font-size:18px;transition:transform .25s ease,color .25s ease;}
+  .opt:hover .arrow{color:var(--blood);transform:translateX(3px);}
+  .opt span.tag{
+    font-size:10px;
+    color:var(--grey);
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  input[type=text]{
+    width:100%;
+    background:var(--ink);
+    border:1px solid var(--line);
+    color:var(--paper);
+    padding:18px 20px;
+    font-size:15px;
+    border-radius:2px;
+    margin-bottom:18px;
+    font-family:'Inter',sans-serif;
+  }
+  input[type=text]:focus{outline:none;border-color:var(--blood);}
+  input[type=text]::placeholder{color:#555;}
+  .btn-primary{
+    width:100%;
+    background:var(--paper);
+    color:var(--black);
+    border:none;
+    padding:18px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border-radius:2px;
+    cursor:pointer;
+    transition:all .25s ease;
+    touch-action:manipulation;
+    font-family:inherit;
+  }
+  .btn-primary:hover{background:var(--blood);color:var(--paper);}
+  .btn-primary:active{transform:scale(0.99);}
+  .back-link{
+    display:inline-block;
+    margin-top:22px;
+    font-size:12px;
+    color:var(--grey);
+    letter-spacing:1px;
+    text-transform:uppercase;
+    cursor:pointer;
+    border:none;
+    background:none;
+    font-family:inherit;
+    touch-action:manipulation;
+  }
+  .back-link:hover{color:var(--paper);}
+  .result-card{
+    border:1px solid var(--line);
+    padding:28px 24px;
+    background:var(--ink);
+    margin-bottom:28px;
+  }
+  .result-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .result-row:last-child{border-bottom:none;}
+  .result-row .k{color:var(--grey);text-transform:uppercase;letter-spacing:1px;font-size:11px;}
+  .result-row .v{color:var(--paper);font-weight:500;text-align:right;}
+  footer{
+    text-align:center;
+    padding:20px 0 30px;
+    font-size:11px;
+    color:#444;
+    letter-spacing:1px;
+  }
+  .whatsapp-icon{
+    width:18px;height:18px;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:8px;
+  }
+  .btn-whatsapp{
+    width:100%;
+    background:var(--blood);
+    color:var(--paper);
+    border:none;
+    padding:18px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border-radius:2px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all .25s ease;
+    touch-action:manipulation;
+    font-family:inherit;
+  }
+  .btn-whatsapp:hover{background:#c9151f;transform:translateY(-1px);}
+  .btn-whatsapp:active{transform:translateY(0) scale(0.99);}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .screen{animation:none;}
+    .opt, .btn-primary, .btn-whatsapp{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="wrap">
+  <header>
+    <div class="logo">INK<span>.</span>MATCH</div>
+    <div class="locale">DUBLIN &middot; REALISM STUDIO</div>
+  </header>
+  <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <main>
+
+    <!-- Intro -->
+    <section class="screen active" data-screen="intro">
+      <div class="step-tag">60 SECOND MATCH</div>
+      <h1>LET'S FIND YOUR PERFECT PIECE</h1>
+      <p class="sub">Five quick questions. No fluff, no messing about. Just tell us what's on your mind and we'll match you with the right artist and slot &mdash; straight talk, sorted.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="goTo(1)"><span>Start the quiz</span><span class="arrow">&rarr;</span></button>
+      </div>
+    </section>
+
+    <!-- Q1 -->
+    <section class="screen" data-screen="1">
+      <div class="step-tag">STEP 1 OF 5</div>
+      <h1>WHAT STYLE ARE YOU AFTER?</h1>
+      <p class="sub">Pick the one that's closest to what you've got in your head.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="selectAnswer('style','Realism')">Realism<span class="tag">Our specialty</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('style','Fine line')">Fine line<span class="tag">Subtle &amp; clean</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('style','Blackwork')">Blackwork<span class="tag">Bold &amp; solid</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('style','Colour work')">Colour work<span class="tag">Vivid &amp; detailed</span></button>
+      </div>
+      <button type="button" class="back-link" onclick="goTo(0)">&larr; Back</button>
+    </section>
+
+    <!-- Q2 -->
+    <section class="screen" data-screen="2">
+      <div class="step-tag">STEP 2 OF 5</div>
+      <h1>WHAT SIZE ARE WE TALKING?</h1>
+      <p class="sub">Rough size is grand &mdash; no need to be exact.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="selectAnswer('size','Small (palm-sized or under)')">Small<span class="tag">Palm-sized or under</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('size','Medium (forearm / calf)')">Medium<span class="tag">Forearm / calf</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('size','Large (thigh / back panel)')">Large<span class="tag">Thigh / back panel</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('size','Full sleeve or large-scale piece')">Full sleeve+<span class="tag">Large-scale piece</span></button>
+      </div>
+      <button type="button" class="back-link" onclick="goTo(1)">&larr; Back</button>
+    </section>
+
+    <!-- Q3 -->
+    <section class="screen" data-screen="3">
+      <div class="step-tag">STEP 3 OF 5</div>
+      <h1>DO YOU HAVE A REFERENCE SORTED?</h1>
+      <p class="sub">Even a rough idea helps us prep for your consult.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="selectAnswer('reference','Yes, I know exactly what I want')">Yes<span class="tag">Know exactly what I want</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('reference','Sort of, I have a rough idea')">Sort of<span class="tag">Rough idea</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('reference','Just researching for now')">Not yet<span class="tag">Just researching</span></button>
+      </div>
+      <button type="button" class="back-link" onclick="goTo(2)">&larr; Back</button>
+    </section>
+
+    <!-- Q4 -->
+    <section class="screen" data-screen="4">
+      <div class="step-tag">STEP 4 OF 5</div>
+      <h1>WHAT'S YOUR BUDGET RANGE?</h1>
+      <p class="sub">Helps us recommend the right session length. All prices in euro.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="selectAnswer('budget','&euro;150 &ndash; &euro;300')">&euro;150 &ndash; &euro;300</button>
+        <button type="button" class="opt" onclick="selectAnswer('budget','&euro;300 &ndash; &euro;600')">&euro;300 &ndash; &euro;600</button>
+        <button type="button" class="opt" onclick="selectAnswer('budget','&euro;600 &ndash; &euro;1,200')">&euro;600 &ndash; &euro;1,200</button>
+        <button type="button" class="opt" onclick="selectAnswer('budget','&euro;1,200+')">&euro;1,200+</button>
+      </div>
+      <button type="button" class="back-link" onclick="goTo(3)">&larr; Back</button>
+    </section>
+
+    <!-- Q5 -->
+    <section class="screen" data-screen="5">
+      <div class="step-tag">STEP 5 OF 5</div>
+      <h1>WHEN DO YOU WANT TO BOOK?</h1>
+      <p class="sub">We're only in Dublin for a limited stretch &mdash; good to know your timing.</p>
+      <div class="options">
+        <button type="button" class="opt" onclick="selectAnswer('timing','This week')">This week<span class="tag">ASAP</span></button>
+        <button type="button" class="opt" onclick="selectAnswer('timing','Next 2 weeks')">Next 2 weeks</button>
+        <button type="button" class="opt" onclick="selectAnswer('timing','Not sure yet')">Not sure yet</button>
+      </div>
+      <button type="button" class="back-link" onclick="goTo(4)">&larr; Back</button>
+    </section>
+
+    <!-- Name capture -->
+    <section class="screen" data-screen="name">
+      <div class="step-tag">ALMOST THERE</div>
+      <h1>WHAT'S YOUR NAME?</h1>
+      <p class="sub">So we know who we're talking to when your message lands.</p>
+      <input type="text" id="nameInput" placeholder="Your first name" autocomplete="given-name" inputmode="text" maxlength="40" enterkeyhint="go">
+      <button type="button" class="btn-primary" onclick="submitName()">See my match &rarr;</button>
+    </section>
+
+    <!-- Result -->
+    <section class="screen" data-screen="result">
+      <div class="step-tag">YOU'RE SORTED</div>
+      <h1 id="resultHeadline">GREAT FIT FOR OUR STUDIO</h1>
+      <p class="sub" id="resultSub">Based on what you've told us, this is exactly the kind of work we love doing. Send this straight to us on WhatsApp and we'll get back to you with real availability today.</p>
+      <div class="result-card" id="resultCard" aria-live="polite"></div>
+      <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.8c.2.2 1.7 2.6 4.1 3.5 2.4.9 2.4.6 2.9.5.4-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        SEND MY ANSWERS
+      </button>
+      <button type="button" class="back-link" onclick="restart()">&larr; Start over</button>
+    </section>
+
+  </main>
+
+  <footer>YOUR ANSWERS GO STRAIGHT TO OUR ARTIST &middot; NO SPAM &middot; NO SIGN-UP</footer>
+</div>
+
+<script>
+  var STEPS = ['intro','1','2','3','4','5','name','result'];
+  var answers = {style:'',size:'',reference:'',budget:'',timing:'',name:''};
+  var currentIndex = 0;
+  var quizStarted = false;
+
+  function goTo(stepIndex){
+    var screens = document.querySelectorAll('.screen');
+    for (var i = 0; i < screens.length; i++){ screens[i].classList.remove('active'); }
+    var key = STEPS[stepIndex];
+    document.querySelector('[data-screen="' + key + '"]').classList.add('active');
+    currentIndex = stepIndex;
+    var pct = Math.min(100, (stepIndex / 5) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressBar').setAttribute('aria-valuenow', String(pct));
+    window.scrollTo(0, 0);
+
+    if (stepIndex === 1 && !quizStarted){
+      quizStarted = true;
+      if (typeof fbq !== 'undefined'){ fbq('trackCustom', 'QuizStarted'); }
+    }
+
+    if (key === 'name'){
+      var nameField = document.getElementById('nameInput');
+      if (nameField){ setTimeout(function(){ nameField.focus(); }, 300); }
+    }
+  }
+
+  function selectAnswer(field, value){
+    answers[field] = value;
+    goTo(currentIndex + 1);
+  }
+
+  function submitName(){
+    var val = document.getElementById('nameInput').value.trim();
+    answers.name = val || 'Friend';
+    buildResult();
+    goTo(7);
+    if (typeof fbq !== 'undefined'){ fbq('track', 'Lead'); }
+    var highBudget = (answers.budget.indexOf('600') !== -1 || answers.budget.indexOf('1,200') !== -1);
+    var urgent = (answers.timing === 'This week' || answers.timing === 'Next 2 weeks');
+    if (highBudget && urgent && typeof fbq !== 'undefined'){
+      fbq('trackCustom', 'QualifiedLead');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var nameInput = document.getElementById('nameInput');
+    if (nameInput){
+      nameInput.addEventListener('keydown', function(e){
+        if (e.key === 'Enter'){
+          e.preventDefault();
+          submitName();
+        }
+      });
+    }
+  });
+
+  function buildResult(){
+    var card = document.getElementById('resultCard');
+    card.innerHTML =
+      row('Style', answers.style) +
+      row('Size', answers.size) +
+      row('Reference', answers.reference) +
+      row('Budget', answers.budget) +
+      row('Timing', answers.timing);
+
+    var headline = document.getElementById('resultHeadline');
+    var sub = document.getElementById('resultSub');
+    if (answers.style === 'Realism'){
+      headline.textContent = 'THIS IS EXACTLY OUR THING';
+      sub.textContent = "Realism is our artist's main style, this is precisely the kind of piece we came to Dublin to create. Send it through and we'll sort your slot.";
+    } else {
+      headline.textContent = 'GREAT FIT FOR OUR STUDIO';
+      sub.textContent = "Based on what you've told us, we'd love to work on this with you. Send this straight to us on WhatsApp and we'll get back with real availability today.";
+    }
+  }
+
+  function row(label, value){
+    return '<div class="result-row"><span class="k">' + label + '</span><span class="v">' + value + '</span></div>';
+  }
+
+  function sendToWhatsApp(){
+    var msg =
+      "Hi! I just did the tattoo quiz, here's what I'm after:\n\n" +
+      "Name: " + answers.name + "\n" +
+      "Style: " + answers.style + "\n" +
+      "Size: " + answers.size + "\n" +
+      "Reference: " + answers.reference + "\n" +
+      "Budget: " + answers.budget + "\n" +
+      "Timing: " + answers.timing + "\n\n" +
+      "I'd love to book a consultation!";
+    var encoded = encodeURIComponent(msg);
+    var waNumber = "353830456226";
+    window.location.href = "https://wa.me/" + waNumber + "?text=" + encoded;
+  }
+
+  function restart(){
+    for (var k in answers){ answers[k] = ''; }
+    quizStarted = false;
+    var nameInput = document.getElementById('nameInput');
+    if (nameInput){ nameInput.value = ''; }
+    goTo(0);
+  }
+</script>
+</body>
+</html>
